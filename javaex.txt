@@ -1,0 +1,77 @@
+JavaScript:
+
+1. HTML to define the content of web pages
+
+   2. CSS to specify the layout of web pages
+
+   3. JavaScript to program the behavior of web pages
+JavaScript is a programming language used to make web pages interactive.
+
+A string can be any text inside double or single quotes
+
+Data types:
+Basic/primitives data types
+1.Numbers<int> infinity, -infinity, null=not a number but considered a number
+2.strings
+3.Bolean
+4.Undifined
+5.Null
+
+Methods:
+Numbers:
+
+1.4526.252.toExponential();Exponential notation is essentially just a way of shortening really long numbers, or really small numbers by removing their zeros
+2.The toFixed() method will round to the nearest whole number:  4.587e2.toFixed();
+3.8.12345.toPrecision(4);
+
+String methods:
+
+1. .toUpperCase(); makes the letters upper case.
+2. .concat(); combines 2 words. Shortcut= "I love" + " " + "Moringa School";
+3. "caterpillar".charAt(5);
+      "p"
+
+Data type conversion:
+parseInt()Note: The Int part of .parseInt() is short for integer, which means it's a whole number. If we wanted to convert something into a number with a decimal, we'd use .parseFloat():  and .toString() to convert between numbers and strings
+
+Often input from a web browser will come in as a string and we will need to convert it to a number before working with it. 
+We can convert a string to a number by passing a string to the parseInt() function (more on functions soon)
+ > var inputtedAge = "45";
+      > inputtedAge;
+      "45"
+      > typeof inputtedAge;
+      "string"
+      > var myAge = parseInt(inputtedAge);
+      > myAge;
+      45
+      > typeof myAge;
+      "number"
+If you need to go the other way around, you can convert a number to a string by calling the toString() method on the number:
+
+FUNCTIONS:
+
+1.alert() argument=string : return value=undefined:is a function. A function is something that performs an action. Just like a method, a function can take an argument. The alert() function pops up a dialog box with the string that you pass 
+2.prompt() argument=string: return value=string:function lets you type a response and the response is returned from it.
+3.confirm() argument=string: return value=boolean: function. This too takes a string as an argument.:returns one of two values: true or false
+
+CUSTOM FUNCTIONS:
+> var sayHi = function() { alert('Hello from Moringa School!'); };
+      undefined
+      > sayHi();
+ > var saySomething = function(whatToSay) { alert(whatToSay); };
+      undefined
+      > saySomething("hello");
+    :: we call "hello!" an argument to the function saySomething(). In the saySomething() function, that argument is assigned to the variable whatToSay - we call that variable a parameter.
+:: argument is the information you pass in, and the parameter is the variable that receives the argument.
+:://> var add = function(number1, number2) { return number1 + number2; };
+      undefined
+      > add(3, 5);
+      8
+    
+
+  
+The return keyword tells JavaScript to give us the result from that line of code. Without a return, JavaScript will return undefined from the function, which is JavaScript's way of saying something does not have a value.
+    
+
+
+

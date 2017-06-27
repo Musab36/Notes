@@ -1,0 +1,7 @@
+Bootstrap:
+
+It's a framework that you can use it on your website to make it responsive
+on mobile devices like mobile phones, tablets and every other dives.
+
+
+The tricky part is to make sure you're always linking your custom stylesheet below Bootstrap's stylesheet in the <head> tags of your HTML. This is because anytime two stylesheets have rules about the same element <h1> headings, in this case) the rules in the latter stylesheet will override the rules in the former. This is because the stylesheet linked first is loaded first. This first stylesheet informs the <h1> element to appear a certain way. But then, the second stylesheet is loaded and it also instructs the <h1> headings to appear a certain way. This second stylesheet's <h1> rule will actually override the <h1> styles from the first stylesheet simply because it loads last. If we temporarily switched the order of the way these stylesheets are linked:

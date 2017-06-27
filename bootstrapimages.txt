@@ -1,0 +1,29 @@
+Bootstrap Images:
+
+img class rounded:
+The .img-rounded class adds rounded corners to an image (not available in IE8):
+class="img-rounded"
+
+img class circled:
+Adds circle corners
+class="img-circle"
+
+img class thumbnail:
+img-thumbnail class shapes the image to a thumbnail:
+class="img-thumbnail"
+
+Responsive images:
+Responsive images automatically adjust to fit the size of the screen.
+img-responsive class applies display: block; and max-width: 100%; and height: auto; to the image:
+class="img-responsive"
+
+Responsive Embed:
+Emeds a video
+<!-- 16:9 aspect ratio -->
+<!-- 4:3 aspect ratio -->
+<div class="embed-responsive embed-responsive-16by9">
+<iframe class="embed-responsive-item" 
+src="http://www.youtube.com/embed/MbCEBY17Lw8"></iframe>
+video aspect ratios are 4:3 (the universal video format of the 20th century), and 16:9 (universal for HD television and European digital television).
+
+

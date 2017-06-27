@@ -1,0 +1,14 @@
+                          ANDROID
+1: Java
+2: SQL
+3: XML
+
+
+
+5 THINGS TO KNOW BEFORE BUILDING YOUR FIRST ANDROID APP:
+
+1: You need to learn Java, there is no way around it
+2: Android part encompasses learning XML for the app design, understanding concepts of Android and using said concepts programmatically with Java
+3: Beginners should probably use an IDE (PraneethVT preferred Android Studio over Eclipse)
+4: Building your first app is time-consuming: it won't happen overnight. This is not a project for those looking for a fast result
+5: When stuck on a problem (which will inevitably happen), turn to Stack Overflow. If no luck there, look to the Android Subreddit where there is a helpful community

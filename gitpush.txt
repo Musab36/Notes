@@ -1,0 +1,11 @@
+Pushing changes to GitHub:
+
+.git status
+.git remote add respo name link https://github/username/respo name
+.git remote -v =checks remotes
+.git add the file you want if you didn't like git add index.html
+.git add --all to add all the changes
+.git commit -m "the file you want to add"
+.git push respo name master
+
+

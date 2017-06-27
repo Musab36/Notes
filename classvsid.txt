@@ -1,0 +1,6 @@
+class vs id:
+
+Both id's and classes can be targeted by CSS rules (classes with a . and id's with a # symbol). For example, both paragraph tags below are styled the same, though one is referenced by class and the other by id.
+
+The important difference is that id's are unique, while classes are not unique. We can use the same class on multiple elements, while id's must be unique to a single element on the page. Id's may appear to work even when duplicated on the same page, but duplicate id's will lead to inconsistent behavior and difficult-to-find bugs. 
+If in doubt, use a class.

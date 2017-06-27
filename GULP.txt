@@ -1,0 +1,186 @@
+                                          Npm and Gulp
+      Initializing npm
+#1 You should initialize each project by typing in the command npm init from the project folder
+#2 Keep pressing enter till you see this code#: {
+    "name": "ping-pong",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
+} 
+*** The above code will be saved in package.json ***
+
+#3 Install gulp in your project folder by typing npm install gulp --save-dev
+% If you get an error trying to install gulp, open your terminal as an administrator % 
+#4 Instal gulp in your computer :: npm install gulp-g
+#5 --save-dev = local installation/ installation for every project folder, -g = global installation/general installation into the entire computer
+
+                                      What is gulp? How is it related to npm?
+##Gulp: A JavaScript package that automates development tasks such as running browserify or concatenating JavaScript files.
+Gulp will be in charge of optimizing our code and packaging it up in a format that the browser can understand. While it is an npm package itself, it will also be in charge of using all the other npm packages.
+
+                                       More Packages:
+#1 Browserify :: npm install browserify --save-dev ;; It will be installed in the package.json and also devDependencies
+*** Both the require keyword and the exports keyword are provided by Node and aren't available in the browser. The browserify package is responsible for using these keywords to translate the code into JavaScript our browser does understand. ***
+                                      Using Browserify with Gulp
+#2 First, we'll need to get a new package called vinyl-source-stream using npm :: npm install vinyl-source-stream --save-dev
+#Second, type down the vars in your gulpfile: var browserify = require('browserify');
+                                             var source = require('vinyl-source-stream');
+#3 gulp-concat: An npm package that concatenates multiple files into one for use in the browser. :: npm install gulp-concat --save-dev
+#4 Minifying with gulp-uglify :: npm install gulp-uglify --save-dev *** Removes uneccessary characters from our js files while preserving their functionality ***
+#5 gulp-util: A npm package that manages multiple utilities, including environmental variables :: npm install gulp-util --save-dev
+#6  del, which stands for delete. Let's install it: :: npm install del --save-dev
+#7 jsHint  :: npm install jshint --save-dev
+           :: npm install gulp-jshint --save-dev
+
+*** vinyl-source-stream: An npm package used for placing browserified source code into a new file. ***
+@@ Example Of A Full Task @@
+gulp.task('jsBrowserify', function() { // 'jsBrowserify' is the name of our task
+  return browserify({ entries: ['./js/pingpong-interface.js'] }) // The file to be browserified
+    .bundle() // A package in browserify
+    .pipe(source('app.js')) // Creates a new file call app.js
+    .pipe(gulp.dest('./build/js')); // Creates two folders Where the new file will be placed
+});
+
+                                       Ignoring Packages in Git
+#1 Create a file named gitignore.txt in your project folder
+#2 Open gitignore.txt and write your commands to be ignored like node_modules/
+#3 Exit the folder
+#4 Hold shift while you right click your project folder
+#5 Click on open command in windows here
+#6 Type ren gitignore.txt .gitignore *** This renames gitignore.txt to .gitignore ***
+
+                                       Writing Gulp Tasks
+To create a task name, use camelCase and descriptive names.
+#1 Make a file called gulpfile.js in your project folder in order to create your tasks
+#2 Initialize gulpfile.js by typing inside gulpfile.js :: var gulp = require('gulp');
+#3 Create your task :: gulp.task('your task name', function(){
+                      inside the body of the function, you can do things
+});
+ @@ Example @@
+gulp.task('myTask', function(){
+  console.log('hello gulp');
+});
+
+*** You can check your task in your terminal by typing gulp myTask /your task name ***
+
+
+                                     Concatenation
+#Concatenation: A process of copying all JavaScript files into one file to be used in the browser and decrease load time.
+#gulp-concat: An npm package that concatenates multiple files into one for use in the browser.
+#Install gulp concat :: npm install gulp-concat --save-dev
+#Initialize gulp concat :: var concat = require('gulp-concat');
+#Globbing pattern: Using wildcard characters (such as *) to specify sets of filenames.
+@@ Example @@
+gulp.task('concatInterface', function() { // Our task
+  return gulp.src(['./js/*-interface.js']) // Source of the file specified
+    .pipe(concat('allConcat.js')) // New file created
+    .pipe(gulp.dest('./tmp')); // Location where the new file will be placed
+});
+@@ The following is an example of adding other Gulp tasks as dependencies in a gulp task: @@
+gulp.task('jsBrowserify', ['concatInterface'], function() {
+  return browserify({ entries: ['./tmp/allConcat.js'] })
+    .bundle()
+    .pipe(source('app.js'))
+    .pipe(gulp.dest('./build/js'));
+});
+*** ['concatInterface'], after the name of the task. This is an array of dependencies. Each dependency represents other Gulp tasks that will run automatically before this Gulp task  ***
+
+
+                                      Minification
+Minification: The process of removing all unnecessary characters in JS files while preserving its functionality, to optimize JavaScript execution.
+*** After we have concatenated our files and browserified the result, We can add minification to the end of our JavaScript  ***
+#Instal minification package :: npm install gulp-uglify --save-dev
+#Initialize it by typing :: var uglify = require('gulp-uglify'); 
+@@ Example Of A Minification Task@@
+gulp.task("minifyScripts", ["jsBrowserify"], function(){ // Our minification task
+  return gulp.src("./build/js/app.js") // Location of the files to be minified
+    .pipe(uglify())
+    .pipe(gulp.dest("./build/js"));
+});
+
+*** Now, we can run $ gulp minifyScripts, and it will run jsBrowserify, which will run concatInterface. ***
+*** JavaScript build tasks go in the order concatInterface -> jsBrowserify -> minifyScripts. ***
+
+
+                                   Build and Clean Tasks
+#Production: The environment that is live for end users.
+#Development: The environment where code is built.
+#Environment variable: A variable that indicates which environment - production or development, for instance - is being referenced.
+#gulp-util: A npm package that manages multiple utilities, including environmental variables :: npm install gulp-util --save-dev
+#Then require our new package at the top of our gulpfile: :: var utilities = require('gulp-util');
+#Create an environment variable called production and use it inside of a new gulp task called build.
+#var buildProduction = utilities.env.production; = tells which kind of environment we are using *** place this at the beginning of our gulpfile, after the require ***
+
+@@Example Of Build Task@@
+gulp.task('build', function(){
+    if (buildProduction) {
+         gulp.start('minifyScripts');
+} else {
+         gulp.start('jsBrowserify');
+});
+
+
+
+*** The environment variable will tell our build task whether to create a development build or a production build ***
+*** If we want to make a production version, which means we are including minification, we would use this command: :: gulp build --production ***
+*** The presence of the --production flag sets our environment variable to true. ***
+*** If we want to make a development build, we would just leave it out and would run this: :: gulp build ***
+
+*** If we were minifying a lot of files, this task might take a lot of time to run. This is worthwhile for optimizing a build that is going to be used by live users - we call this a production build. But we don't need to re-minify our JavaScript over and over again as we develop. ***
+*** Environment variable. This variable will simply indicate which environment (development or production) is being referenced. ***
+
+                        
+                                               Clean Tasks
+#We're going to need is a task to clean up our environment before we make a build.
+#Install del package which deletes files as we need to use files which are upto date :: npm install del --save-dev
+#Require it at the top of your gulpfile :: var del = require('del');
+ @@ Example Of A Clean Task @@
+gulp.task("clean", function(){
+  return del(['build', 'tmp']); // We pass del an array of the paths to delete and it removes them. 
+});
+
+*** Here, we're telling it to delete the entire build and tmp folders.  ***
+*** We'll put it right before the build task and call it automatically by making it a dependency of our build task. ***
+gulp.task('build', ['clean'], function(){ // clean task becomes a dependency of build task
+    if (buildProduction) {
+       gulp.start('minifyScripts');
+} else {
+       gulp.start('jsBrowserfy');
+    }
+});
+
+*** whether we run gulp build or gulp build --production, we will have a fresh folder of the newest files to work with. ***
+
+*** The gulp.start function is undocumented on purpose because it will be deprecated in a future version of gulp. In fact, it is actually inherited from a different framework ***
+*** it is very common to use it in this fashion to trigger tasks based on conditional statements ***
+
+             
+                                                 JSHint
+#Linter: A tool that analyzes your code and warns you about parts that don't follow stylistic conventions or could cause bugs in the future.
+#JSHint: A specific linter tool that can be installed with an npm package.
+#Install jshint package :: npm install jshint --save-dev 
+                        :: npm install gulp-jshint --save-dev
+#Then require it :: var jshint = require('gulp-jshint');
+#We don't need to require the jshint package, only the gulp-jshint package. 
+#Put this task at the very bottom of your gulpfile since we will run it separately from the chain of build tasks. 
+
+*** We are pulling in all the JavaScript files in our js folder, running jshint on them ***
+*** then using the default jshint reporter to show us our errors. ***
+*** Try it out, just run the command: gulp jshint***
+
+@@ An example gulp task that uses JSHint to lint JavaScript code: @@
+var jshint = require('gulp-jshint');
+
+gulp.task('jshint', function(){
+      gulp.src(['./js/*.js'])
+      .pipe(jshint())
+      .pipe(jshint.reporter('default'));
+});

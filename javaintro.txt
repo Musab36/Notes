@@ -1,0 +1,113 @@
+Javascript:
+
+Introduced in at Netscape 1995 by Brendan Eich,its official name is ECMAScript,it got its name from the international organisation that maintains it ECMA(European Computer Manufactures Association).
+
+JQuery:
+
+jQuery is a JavaScript library that makes it easier to incorporate JavaScript on your web pages. When we say it is a library, we mean that many common tasks that would take many, many lines of JavaScript code to execute have been packaged into methods that you'll be able to use with a single line of code. These methods are always available and ready to use the same way you might check out a book at a library. The goal of jQuery is to allow its users to "write less, do more". It's also one of the primary ways we can add 
+interactivity to our sites
+
+Arithmetic:
+
+ +, -, *, /, and % are called operators. An operator is a special character (or characters) that indicates an action to be performed. Try dividing 0 by 0. The result, NaN, stands for not a number. In JavaScript, NaN is actually considered a type of number (bizarre as that may seem). Try dividing any other number by 0. The result, Infinity, is also a number in JavaScript.
+
+Additional tips for naming JavaScript variables:
+
+Variables should begin with a letter.
+Variables are case sensitive (myNumber is a different variable than myNUMBER).
+Use clear names that describe the value being stored like myNumber.
+Always name your variables in a manner that will be easy for other developers to understand. Avoid vague letters or initials. (For example: var x = 45 doesn't tell us what the value is. Is 45 an age, a distance, size, a time?...)
+
+In JavaScript, it's conventional to give variables names that start with a lowercase letter, and if they are more than one word, to capitalize the first letter of subsequent words. This is called lower camel case, because the capitalized letters look like a camel's humps... or something. Sometimes you'll see a variable initially set without the var keyword, like this:
+
+myNumber = 45;
+
+Variables, in JavaScript, are written in lower camelcase
+Variables are set using the var keyword
+Variables can be used in arithmetic
+
+> "Quoth the raven, \"Nevermore.\"";
+      "Quoth the raven, "Nevermore.""
+    
+
+  
+The '\' is called an escape. It tells JavaScript that the " that comes right after it is not the end of the string, but just a character inside the string. 
+You can also use single quotes:
+
+    
+
+      '"Programming is fun!", she exclaimed.';
+      ""Programming is fun!", she exclaimed."
+    Strings can include letters, punctuation and numbers
+
+Strings are surrounded with quotation marks
+Variables can be set equal to strings
+
+Exponential notation is essentially just a way of shortening really long numbers, or really small numbers by removing their zeros. If you're not familiar with exponential notation, here's how it works. Take the number 78.5. In exponential notation, we write it 7.85 * 10. Or take 356.97; in exponential notation, that's 3.5697 * 102. You can also write it as 3.5697e+2. 
+Exponential notation makes it easy to write very large or very small numbers. For example, 1,000,000,000 becomes 1e+9, and 0.00000002 becomes 2e-8. 
+We can use JavaScript to easily change numbers into exponential notation:
+
+    
+
+      48432.78.toExponential();
+      "4.843278e+4"
+    
+You can also go in the other direction, and convert out of exponential notation:
+
+    
+
+      4.587e2.toFixed();
+      "459"
+The toFixed() method will round to the nearest whole number. Here's how we can tell it how many decimal places to use:
+
+    
+
+      46.1.toFixed(2);
+      "46.10"
+
+The argument to the method is located within the parentheses
+Methods, in JavaScript, are always followed by parentheses
+
+r even call the method on a variable assigned to a string:
+
+    
+
+      > var word = "foo";
+      undefined
+      > word.concat("bar");
+      "foobar"
+    
+
+  
+Methods can be chained like this:
+
+    
+
+      > "foo".concat("bar").toUpperCase();
+      "FOOBAR"
+
+shortcut for the concat() method: 
+    
+
+      > "I love" + " " + "Moringa School";
+      "I love Moringa School"
+    
+
+  
+Or with variables:
+
+    
+
+      > var sentiment = "I love ";
+      undefined
+      > var animal1 = "cats";
+      undefined
+      > var animal2 = "dogs;"
+      undefined
+      > sentiment + animal1;
+      "I love cats"
+      > sentiment + animal2;
+      "I love dogs"
+    
+To escape characters use the \ characte
+

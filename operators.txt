@@ -1,0 +1,6 @@
+operators:
+
+= is called an assignment operator because it assigns the value on the right of the operator to the variable on the left.
+
+ When we're asking whether something is equal, we use === 
+!== means "not-equal-to"

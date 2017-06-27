@@ -1,0 +1,110 @@
+JQUERY EVENTS:
+
+1: .mouseenter(function() does something when the mouse over what you called the function on
+
+2:.mouseleave(function() does something when the mouse passes and leaves what you called that function on
+
+3:.mousedown(function() The function is executed, when the left, middle or right mouse button is pressed down, while the mouse is over the HTML element:
+
+4:.mouseup(function() The function is executed, when the left, middle or right mouse button is released, while the mouse is over the HTML element:
+
+5:.hover(function() The first function is executed when the mouse enters the HTML element, and the second function is executed when the mouse leaves the HTML element:
+
+6:.focus(function() The function is executed when the form field gets focus:
+
+7:.blur(function() The function is executed when the form field loses focus:
+
+8: onmouseover="function name()"
+9: onmouseout()
+10: onclick()
+11: onchange() for changing things
+
+                                  : onchange example
+<select name="slect" id="selc" onchange="changeBackground(this)">
+<option>Cyan</option>
+<option>Blue</option>
+<option>Yellow</option>
+</select>
+
+</form>
+</div>
+<script>
+function changeBackground(x) {
+	console.log(x.value);
+	var body = document.getElementById('body');
+	body.style.backgroundColor = x.value;
+}
+</script>
+
+                ANIMATE:
+1: .animate({});
+               
+               EXAMPLES:
+
+1:  $("button").click(function(){
+    $("div").animate({left: '250px'});
+}); 
+
+2:  $("button").click(function(){
+    $("div").animate({
+        left: '250px',
+        opacity: '0.5',
+        height: '150px',
+        width: '150px'
+    });
+}); 
+
+3: $("button").click(function(){
+    $("div").animate({
+        left: '250px',
+        height: '+=150px',
+        width: '+=150px'
+    });
+}); 
+
+4: $("button").click(function(){
+    $("div").animate({
+        height: 'toggle'
+    });
+}); 
+
+5:  $(document).ready(function(){
+    $("button").click(function(){
+        var div = $("div");
+        div.animate({height: '300px', opacity: '0.4'}, "slow");
+        div.animate({width: '300px', opacity: '0.8'}, "slow");
+        div.animate({height: '100px', opacity: '0.4'}, "slow");
+        div.animate({width: '100px', opacity: '0.8'}, "slow");
+    });
+});
+
+6:  $("button").click(function(){
+    var div = $("div");
+    div.animate({left: '100px'}, "slow");
+    div.animate({fontSize: '3em'}, "slow");
+}); 
+
+      
+               .stop();
+
+The jQuery stop() method is used to stop an animation or effect before it is finished.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

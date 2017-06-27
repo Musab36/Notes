@@ -1,0 +1,7 @@
+Debugging html and css:
+
+In Chrome, click on the menu button (it looks like ☰ and is on the right side of the address bar), go to the More Tools menu, and click Developer Tools. You may also have to click the Console tab at the top of the window that pops open. (As a shortcut, you can also press F12.) This is called the JavaScript console
+
+Inspect:
+
+Ctrl + Shift + I

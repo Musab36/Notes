@@ -1,0 +1,77 @@
+Bootstrap:
+
+
+Grid system:
+Each row=12 columns
+
+Containers,Rows & Columns
+
+-Containers surround the whole section of rows and columns
+
+-Rows represents a horizontal line of elements
+
+-Columns represent the horizontal space that elements take up in a row
+
+Containers:
+
+Surrounds all rows and columns
+There are two types of containers: Fixed and fluid
+The fixed one responds to media queries,at different media queries,it's given a fixed width and pixles.
+Fluid one just responds to the viewport widht and is always a 100% of its containing element
+
+Columns:
+
+-We assign elements within a row,a column width
+-We do this by using bootstrap classes:
+
+               col-{size}-{number}
+{size}=the size of the viewport which you're targeting 
+{number}=number of columns you want the element to span
+
+Column classes:
+
+SIZES
+xs(<768), sm(>=768), md(>=992), lg(>=1200)
+
+NUMBER OF COLUMNS:
+Any target between 1 and 12
+
+Example:"col-xs-12" or"col-md-6"
+
+Grid Classes
+The Bootstrap grid system has four classes:
+
+xs (for phones)
+sm (for tablets)
+md (for desktops)
+lg (for larger desktops)
+
+<div class="row">
+  <div class="col-*-*"></div>
+</div>
+<div class="row">
+  <div class="col-*-*"></div>
+  <div class="col-*-*"></div>
+  <div class="col-*-*"></div>
+</div>
+<div class="row">
+  ...
+</div>
+
+First; create a row (<div class="row">). Then, add the desired number of columns (tags with appropriate .col-*-* classes). Note that numbers in .col-*-* should always add up to 12 for each row.
+
+he following is a basic structure of a Bootstrap grid:
+
+<div class="container">
+  <div class="row">
+    <div class="col-*-*"></div>
+  </div>
+  <div class="row">
+    <div class="col-*-*"></div>
+    <div class="col-*-*"></div>
+    <div class="col-*-*"></div>
+  </div>
+  <div class="row">
+    ...
+  </div>
+</div

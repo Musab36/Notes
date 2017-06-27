@@ -1,0 +1,32 @@
+                 JUMBOTRON
+
+A jumbotron indicates a big box for calling extra attention to some special content or information.
+
+A jumbotron is displayed as a grey box with rounded corners. It also enlarges the font sizes of the text inside it.
+
+Tip: Inside a jumbotron you can put nearly any valid HTML, including other Bootstrap elements/classes.
+
+Use a <div> element with class .jumbotron to create a jumbotron:
+
+Place the jumbotron inside the <div class="container"> if you want the jumbotron to NOT extend to the edge of the screen:
+
+Place the jumbotron outside the <div class="container"> if you want the jumbotron to extend to the screen edges:
+
+                   PAGE-HEADER
+
+A page header is like a section divider.
+
+The .page-header class adds a horizontal line under the heading (+ adds some extra space around the element):
+
+Use a <div> element with class .page-header to create a page header:
+
+                   WELLS
+
+The .well class adds a rounded border around an element with a gray background color and some padding:
+
+Change the size of the well by adding the .well-sm class for small wells or  .well-lg class for large wells: <div class="well well-sm">
+
+                 ALERTS
+
+Alerts are created with the .alert class, followed by one of the four contextual classes .alert-success, .alert-info, .alert-warning or .alert-danger: <div class="alert alert-info">
+   

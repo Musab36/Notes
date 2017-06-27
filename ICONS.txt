@@ -1,0 +1,65 @@
+                          ICONS
+
+fa fa-home
+fa fa-bars
+fa fa-arrow-left
+fa fa-arrow-right
+
+fa fa-search
+fa fa-close
+fa fa-refresh
+fa fa-trash
+
+fa fa-male
+fa fa-car
+fa fa-truck
+fa fa-plane
+<i class="fa fa-home"></i>
+
+               Google icons:
+Home
+Menu
+arrow_back
+arrow_forward
+search
+close
+refresh
+delete
+person
+directions_car
+local_shipping
+local_airport
+
+<i class="material-icons">home</i>
+<i class="material-icons">search</i>
+<i class="material-icons">cloud</i>
+<i class="material-icons">delete</i>
+
+               Bootstrap icons:
+home
+menu-hamburger
+arrow_back
+arrow_forward
+
+search
+remove
+refresh
+trash
+
+user
+file
+print
+plane
+Example
+
+<i class="glyphicon glyphicon-home"></i>
+<i class="glyphicon glyphicon-search"></i>
+<i class="glyphicon glyphicon-cloud"></i>
+<i class="glyphicon glyphicon-trash"></i>
+
+<i class="fa fa-info-circle"></i>
+
+Use Font Awesome to add a thumbs-up icon to your like button by giving it an i element with the classes fa and fa-thumbs-up.
+Font Awesome is a convenient library of icons. These icons are vector graphics, stored in the .svg file format. These icons are treated just like fonts. You can specify their size using pixels, and they will assume the font size of their parent HTML elements.
+
+You can add the fa-paper-plane Font Awesome icon by adding <i class="fa fa-paper-plane"></i> within your submit button element.

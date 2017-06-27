@@ -1,0 +1,13 @@
+ARRAYS:List of data or information
+METHODS:
+
+1: var.pop(); pops the last item and removes it from the list
+2: var name.reverse(); reverses the order of items in a list
+3:var name.push(); adds new items to the list
+4:var name.concat(); combines
+5:var name.slice(); used for cloning between two arrays
+6:var name.forEach(); used for looping
+7:var name.map(); method does not actually change the array it's called on, but it returns a new transformed array.
+
+
+f you need to compare the contents of two arrays, one way to accomplish this is to transform the arrays into strings using the toString() function on each and comparing the return values

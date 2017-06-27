@@ -1,0 +1,69 @@
+                                JAVA
+        VARIABLES:
+You can never use an number in the begginning of var like int 10my_number, you can use a number in the middle or at the end.
+Var names can't contain spaces
+public class MyFirstclass {
+
+public static void main(String[] args) { 
+		// TODO Auto-generated method stub
+                // This is our scope and main method
+
+int number1 = 5;
+int number2 = 7;
+int result = number1 + number2;
+System.out.println(result);
+
+
+	}
+
+
+}
+
+# Everything must be in a class like the public class we have at the top
+# If we devide number1 and number2 we will get 0,to avoid that use float in the place of int like:
+
+float number1 = 5;
+float number2 = 7;
+float result = number1 / number2;
+System.out.println(result);
+
+        TYPES OF VARIABLES
+There are two types of variables:
+1: Primitive types: Such as:
+                      a: int
+                      b: float = float  my_float = 2.5f; If you don't put f at the end, it will become a double.
+                      c: long = long my_long = 1000;
+                      d: short = short my_short = 100;
+                      e: byte = byte my_byte = 10;
+                      f: double = for decimals and its container takes 8 bytes: double  my_double = 25.2;
+# float and int can hold only 4 bytes.
+2: Complex types: such as:
+                      a: string = String my_string = "bla bla"; String is a class and classes start with a capital.
+                      b: char = char my_char = 'c'; char is a character and uses single quotes.
+                      c: Scanner = it's a class, String name, int age; Scanner my_scanner = new Scanner(System.in); 
+                                   you'll need to import the  scanner for  it to work, System.in takes input from the user
+                                   System.ou.println("Please enter your name");
+                                   name = my_scanner.next(); .next is a scanner method, if you put .nextLine();
+                                   instead of .next() it will take the entire line as one and will allow
+                                   the user to put his full name
+                                   System.out.println("Please enter your age");
+                                   age = my_scanner.nextInt(); Int specifies intergers
+                                   System.out.println("name: " + name);
+                                   System.out.println("age: " + age);
+
+                                                  ARRAYS:
+int[] my_array = new int[5] {10, 12, 16, 20, 30};
+To access your values you can do: System.out.println(my_array[3]);
+int = type of what should be in the array
+{10, 12, 16, 20, 30}; = this is our array
+[] = the array, you can also put it after the name like my_array[]
+my_array = the array name
+new = we use new for adding items into the array
+[5] = the number of things in the array
+
+int[] big_array = new int[1000];
+for(int i = 0; i < big_array.length; i++) {
+big_array[i] = i;
+}
+
+#This is an array of intergers and arrays only hold one data type

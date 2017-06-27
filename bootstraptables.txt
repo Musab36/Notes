@@ -1,0 +1,47 @@
+Bootstrap:
+Tables:
+
+The .table class adds basic styling (light padding and only horizontal dividers) to a table
+
+1.Create <table class="table">
+2.Create <thead>
+3.Open list <tr>
+4.List table headers <th></th>
+5.Close the list  </tr>
+6.close the header </thead>
+7.Open the table body <tbody>
+8.Open list <tr>
+9.List body contents <td></td>
+10.Close the list </tr>
+11.You can open another list in the body after you closed the first one.
+12.When you finish the body list, close the table body </tbody> and the table </table> 
+
+Striped table:
+<table class="table table-striped">
+//Adds stripes like zebra
+
+Bordered table:
+<table class="table table-bordered">
+//Encloses the entire table in a border.
+
+Hover table:
+<table class="table table-hover">
+table-hover class adds a hover effect (grey background color) on table rows
+
+Condensed table:
+<table class="table table-condensed">
+table-condensed class makes a table more compact by cutting cell padding in half:
+
+Responsive table:
+<div class="table-responsive">
+<table class="table">
+table-responsive class creates a responsive table. The table will then scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:
+
+Contextual classes:
+.active	Applies the hover color to the table row or table cell
+.success	Indicates a successful or positive action
+.info	Indicates a neutral informative change or action
+.warning	Indicates a warning that might need attention
+.danger	Indicates a dangerous or potentially negative action
+
+

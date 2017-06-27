@@ -1,0 +1,49 @@
+Literal Notation:
+
+It's a variable assigned a value of an object inside the curly braces, { }.
+Every property of a JavaScript object consists of a key-value pair. The key is the variable that describes the kind of information to be stored. The value is the specific value of the key
+Each key-value pair is separated by a colon: And pairs are separated from each other with a comma,
+
+When this is used in an object's method, it always refers to the object on which the method is called.
+
+
+Constructors:
+
+A constructor is a function that can be invoked using the new keyword to create new objects
+ To visually identify constructor functions, they are conventionally named with a capital first letter.
+
+1: Declare a function: function People(name, languages, age) {
+                           this.name = name;
+                           this.languages = languages;
+                           this.age = age;
+                           }
+2: Then Declare your variables that represent the People:
+    like: var isack = new People("Isack", ["English", "Swahili", "Zulu"], 20); and so on with as many vars as you want!
+
+Prototypes:
+
+To define methods, JavaScript employs prototypes.
+A prototype is just an object from which other objects inherit methods. 
+avaScript first looks at the methods on the object, and if it doesn't find them there, it looks to the prototype.
+People.prototype.greetings = function() {
+                console.log("Whatsup?!");
+                }
+This prototype method can be shared by all the objects in the var people or any other objects. eg Isack.greetings();
+
+ADDRESS BOOK:
+SCRIPTS:
+
+1: Business logic: Create your constructor function:
+2: User interface logic: $(document).ready(function(event) {
+                                  $("form id").submit(function()
+                                       
+3: Create varibles for what you want to have in your ADB: var inputtedfirstName = $("input id for first name").val(); and so on.
+
+4: Create  a var for the new things/items: var newPeople = new People(inputtedFirstName, inputtedLastName);
+
+5: Append your list:    $("ul id").append("<li><span class='people'>" + newPeople.firstName + "</span></li>");
+
+6: List what you wanted in your ADB:  $("input id").val("");
+                                      $("input id").val("");
+
+7: Close the functions

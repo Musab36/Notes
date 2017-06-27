@@ -1,0 +1,16 @@
+                            GULP PROJECT STEPS:
+
+#1 Create your gulp folder project
+#2 Initialize your project :: npm init
+#3 Install gulp in your project folder :: npm install gulp --save-dev
+#4 Install gulp in your computer :: npm install gulp-g  :You will need to run terminal as an administrator
+#5 Create gulpfile.js to write your tasks
+#6 Instal browserify package :: npm install browserify --save-dev 
+#7 Install vinyl-source-stream package :: npm install vinyl-source-stream --save-dev
+#8 Install gulp concat package :: npm install gulp-concat --save-dev
+#9 Install gulp minifaction package :: npm install gulp-uglify --save-dev
+#10 Install gulp util package :: npm install gulp-util --save-dev
+#11 Install del package :: npm install del --save-dev
+#12 Instal jshint package :: npm install jshint --save-dev
+#13 Install gulp jshint package :: npm install gulp-jshint --save-dev
+#14 Create gitignore file

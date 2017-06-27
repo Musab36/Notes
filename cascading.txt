@@ -1,0 +1,11 @@
+understanding cascading: 
+
+If two rules have the same specificity, the last one wins - in other words, the one that's the farthest down in the CSS file takes precedence.
+
+ In the Cascading section, we learned:
+
+Styles can be inherited by elements nested within other elements
+In the CSS stylesheet, body can be used to style the entire page
+Elements within other elements are known as child elements
+The more specific CSS rule takes precedence
+Avoid inline styling at all costs because it invalidates the power of CSS

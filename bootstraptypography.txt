@@ -1,0 +1,54 @@
+Bootstrap:
+Typography:
+<blockquote>
+The blockquotes are used to present content from another source.
+<footer>Where the content came from</footer> 
+ </blockquote>
+To show the quote on the right use the class .blockquote-reverse:
+
+1:<small></small>
+ element is used to create a lighter, secondary text in any heading:
+
+2:<mark></mark>
+Use the mark element to highlight text.
+
+3:<abbr></abbr>
+The abbr element is used to mark up an abbreviation or acronym:
+
+4:<dl><dt list><dd description of dt></dl>
+ The dl element indicates a description list:
+
+5:<code></code>:
+Red hightlight text
+
+6:<kbd></kbd> 
+ Use to open the Print dialog box.To indicate input that is typically entered via the keyboard, use the kbd element:
+
+7:<pre></pre>
+ Text in a pre element
+is displayed in a fixed-width
+font, and it preserves
+both      spaces and
+line breaks.
+For multiple lines of code, use the pre element
+
+8:The classes for text colors are:.text-muted, .text-primary, .text-success, .text-info, .text-warning, and .text-danger: .bg-muted... to change the background color of the text
+
+Class	Description	Example
+.lead	Makes a paragraph stand out	Try it
+.small	Indicates smaller text (set to 85% of the size of the parent)	Try it
+.text-left	Indicates left-aligned text	Try it
+.text-center	Indicates center-aligned text	Try it
+.text-right	Indicates right-aligned text	Try it
+.text-justify	Indicates justified text	Try it
+.text-nowrap	Indicates no wrap text	Try it
+.text-lowercase	Indicates lowercased text	Try it
+.text-uppercase	Indicates uppercased text	Try it
+.text-capitalize	Indicates capitalized text	Try it
+.initialism	Displays the text inside an <abbr> element in a slightly smaller font size	Try it
+.list-unstyled	Removes the default list-style and left margin on list items (works on both <ul> and <ol>). This class only applies to immediate children list items (to remove the default list-style from any nested lists, apply this class to any nested lists as well)	Try it
+.list-inline	Places all list items on a single line	Try it
+.dl-horizontal	Lines up the terms (<dt>) and descriptions (<dd>) in <dl> elements side-by-side. Starts off like default <dl>s, but when the browser window expands, it will line up side-by-side	Try it
+.pre-scrollable	Makes a <pre> element scrollable 
+
+

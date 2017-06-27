@@ -1,0 +1,106 @@
+                ONE:
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Github Checkout</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/frontend.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="build/js/app.js"></script>
+</head>
+
+<body>
+    <h1>Github-Checkout</h1>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form" id="search">
+                <input type="text" id="input" placeholder="Github Username" />
+                <button type="submit">search</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Where The Github Repositories will appear -->
+
+    <div id="results">
+        <div id="repos">
+            <div id="gitrepos"></div>
+          </div>
+        </div>
+  
+</body>
+
+</html>
+
+                               BAKEND.JS:
+var key = require('./../.env').apiKey; //imports the api key saved in the .env file
+var githubRepos = function(username) {
+        // loads data from github when a user
+        return $.get('https://api.github.com/users/' + username + '/repos?access_token=' + key).then(function(response) {
+                    // gets the contents in the repos id and sets the content to empty
+                    $("#repos").html(" ");
+                    console.log(response);
+                    //This function now calculates the length of the response and if  length is greater than 0 Github Respositories is appended appends
+                    if (response.length > 0) {
+                        var description = " ";
+                        $("#repos").append("<h1 id='repo-title'><span class='title'></span>Github Repositories</h1>");
+                        //This function loops through each response and when the github username is found then moments.js is used to display when a repo was created and updated
+                        $.each(response, function(index) {
+                            var created = moment(this.created_at).format('MMMM Do YYYY, h a');
+                            var updated = moment(this.updated_at).format('MMMM Do YYYY, h a');
+                            if (this.description !== null) {
+                                description = this.description;
+                            }
+                            $("#repos").append("<div class='col-md-12'>" + "<h1><a href='" + this.url + "'><span class='title'></span> " + this.name + "</a></h1>" + "<div class='col-md-12'>" + "<p>Created: " + created + "</p>" + "<p>Updated: " + updated + "</p>" + "</div>" + "<div class='col-md-12'>" + "<p>" + description + "</p>" + "</div>" +
+                                "</div>");
+                        })
+                    }
+                     else {
+                        // This section of the code gets all the contents that are within the user id
+                        $("#user").html("<h1 class='center'>USER NOT FOUND</h1>");
+                        $.each(response, function(i)
+                          {
+                        }).fail(function(error) {
+                        console.log(error.responseJSON.message);
+                      }
+                    )}
+                  }
+                )};
+                    //This exports the githubRepos variable to be used by other elements.
+                     exports.repoModule = githubRepos;
+
+
+                                  USER-INTERFACE.JS
+//imports the backend js properties
+var githubRepos = require('./../js/backend.js').repoModule;
+
+// This function animates the form
+$('.message a').click(function () {
+    $('form').animate({
+        height: "toggle"
+        , opacity: "toggle"
+    }, "slow");
+});
+
+//Collects what the user inputs in the form
+$(function () {
+    $("#results").hide();
+    $("#search").submit(function (event) {
+        event.preventDefault();
+        var username = $("#input").val();
+        $("#results").hide(function () {
+            //Use a promise to prevent fading conflicts
+            githubRepos(username).then(function () {
+                $("#results").show();
+            });
+        });
+    });
+});
+
+

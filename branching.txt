@@ -1,0 +1,25 @@
+Branching:
+
+In order for for GitHub Pages to work, we need to create a branch called gh-pages.We can also have several other copies of our project on the same machine in the same directory with different names. Each version or copy of the master is called a branch. A branch can split off from the master the same way a tree branch splits off from the trunk of the tree.
+
+First we will create the new branch and switch into it by running the commands:
+
+$ git branch gh-pages 
+$ git checkout gh-pages
+
+Pushing branches to GitHub:
+
+Now that we are in the gh-pages branch, let's push this new branch to GitHub:
+
+$ git push origin gh-pages 
+
+Merging:
+
+create a branch,git branch (branch name)
+checkout (branch name)
+git add --all
+git commit -m "branch name"
+git push origin (branch name)
+to merge git checkout to the branch you want to merge the changes into
+then git merge (the branch name you want to merge changes from
+To delete the old branch git -D (branch name) 

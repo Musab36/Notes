@@ -1,0 +1,81 @@
+JSON:
+Stands for JavaScript Object Notation
+It stores and exchanges data
+It's a text
+
+var pets = [
+{
+"name": "Meows",
+"species": "cat",
+"favfood": "tuna"
+},
+{
+"name": "Barky",
+"species": "Dog",
+"favfood": "carrots"
+}
+]
+
+These are objects nested inside each other in an array,this is an example of JSON storing data!
+
+Accessing what's in the array: pets[1].favfood it will access the second item in the array which is the second object.
+
+JSON SYNTAX RULES:
+
+JSON syntax is derived from JavaScript object notation syntax:
+
+Data is in name/value pairs
+Data is separated by commas
+Curly braces hold objects
+Square brackets hold arrays
+
+SON data is written as name/value pairs.
+
+A name/value pair consists of a field name (in double quotes), followed by a colon, followed by a value:
+
+"name":"John"
+JSON names require double quotes. JavaScript names don't.
+
+In JSON, keys must be strings, written with double quotes: { "name":"John" }
+var person = { "name":"John", "age":31, "city":"New York" };
+
+JSON VALUES:
+In JSON, values must be one of the following data types:
+
+a string
+a number
+an object (JSON object)
+an array
+a Boolean
+null
+
+JSON Files
+The file type for JSON files is ".json"
+The MIME type for JSON text is "application/json"
+
+
+                 CONVERTING OBJECTS IN JSON AND SENDING IT
+
+var myObj = { "name":"John", "age":31, "city":"New York" };
+var myJSON = JSON.stringify(myObj);
+window.location = "demo_json.php?x=" + myJSON;
+
+                 Convert a string written in JSON format, into a JavaScript object:
+
+var myJSON = '{ "name":"John", "age":31, "city":"New York" }';
+var myObj = JSON.parse(myJSON);
+document.getElementById("demo").innerHTML = myObj.name;
+
+                  STORING AND RETRIEVING
+
+var myObj, myJSON, text, obj;
+
+//Storing data:
+myObj = { "name":"John", "age":31, "city":"New York" };
+myJSON = JSON.stringify(myObj);
+localStorage.setItem("testJSON", myJSON);
+
+//Retrieving data:
+text = localStorage.getItem("testJSON");
+obj = JSON.parse(text);
+document.getElementById("demo").innerHTML = obj.name;

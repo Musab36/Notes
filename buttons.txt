@@ -1,0 +1,54 @@
+                   BUTTONS
+
+<button type="button" class="btn">Basic</button>
+  <button type="button" class="btn btn-default">Default</button>
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+
+The classes that define the different sizes are:
+
+.btn-lg
+.btn-md
+.btn-sm
+.btn-xs
+
+
+Add class .btn-block to create a block level button:
+
+The class .active makes a button appear pressed, and the class .disabled makes a button unclickable:
+  <button type="button" class="btn btn-link">Link</button>
+
+Use a <div> element with class .btn-group to create a button group:
+
+ Instead of applying button sizes to every button in a group, use class .btn-group-lg|sm|xs to size all buttons in the group:
+<div class="btn-group btn-group-lg">
+
+Use the class .btn-group-vertical to create a vertical button group:
+
+To span the entire width of the screen, use the .btn-group-justified class: 
+
+Nest button groups to create dropdown menus:
+<div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    Sony <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#">Tablet</a></li>
+      <li><a href="#">Smartphone</a></li>
+    </ul>
+  </div>
+
+Split Button Dropdowns
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">Sony</button>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Tablet</a></li>
+    <li><a href="#">Smartphone</a></li>
+  </ul>
+</div>  
+   

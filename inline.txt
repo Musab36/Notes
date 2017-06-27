@@ -1,0 +1,17 @@
+Inline elements:
+ 
+Inline elements are elements that do not appear on their own line but share a line with other elements. 
+
+The <strong> tag indicates that something is important. By default, it will make the text inside it bold. 
+If we want to emphasize something, we'll use the <em> tag, which will italicize it:
+
+<p>Check out <a href="http://www.moringaschool.com/">Moringa School</a>. It's a great school for learning web programming!</p>
+The anchor tag, <a>, creates a link, and the href (for hypertext reference) attribute provides the web address the link will go to. 
+
+ if you write a link like <a href="www.moringaschool.com/">Moringa School</a>, it will look for a file called www.moringaschool.com in the current directory. So if you're linking to another website, don't forget to put http:// in front! 
+
+<img src="kitten.jpg" alt="A photo of a cute kitten">
+The <img> tag is different from the other tags we've used in that it is self-closing: you don't need a closing tag. Also notice the alt attribute, which the browser displays if it can't render the image. This attribute is optional, but it's a really good idea to include it, so that blind people using software that reads web pages to them can know what the image is. Typically, webpages will store their images in a separate folder from their HTML. Let's create a folder called img and put the image file in there. Now, we need to update our code to tell the browser where to find the image:
+
+<img src="img/kitten.jpg" alt="A photo of a cute kitten">
+img/kitten.jpg tells the browser to look in the img folder in the current directory and then look for the kitten.jpg file. 
