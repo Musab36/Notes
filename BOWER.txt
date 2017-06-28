@@ -1,0 +1,170 @@
+                                   BOWER:
+Bower. It is a package manager like npm, but it is optimized for frontend packages like Bootstrap and jQuery
+Bower makes sure that each package is installed only once, even if it is used by multiple packages. 
+Bower is itself a Node module
+#Install bower into your computer :: npm install bower -g
+ 
+                                   Initializing Bower
+You should use Bower the same way that you begin a project with npm.
+#bower init 
+#Keep pressing enter till descriptions are shown below
+
+                                   Installing Front-End Dependencies via Bower
+#1 jQuery :: bower install jquery --save
+#::bower install = for combination
+*** we are using the --save flag instead of our usual --save-dev flag because we do want to use jQuery in the final production build. *** 
+*** Bower created a folder called bower_components for its dependencies, We should add this folder to our .gitignore file, ***
+# Change your jquery src to <script src="bower_components/jquery/dist/jquery.min.js"></script>
+#2 Bootstrap :: bower install bootstrap --save
+*** we need to make sure we're loading jQuery before the Bootstrap JavaScript, since jQuery is a dependency of Bootstrap. ***
+#<script src="bower_components/jquery/dist/jquery.min.js"></script>
+ <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+ <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+ <script src="build/js/app.js"></script>
+#3 Moment.js :: bower install moment --save ,moment.js enables us to work with dates and times in various formats in our apps.we'll install it with Bower
+#Put its minified link in script tags above the app.js <script src="bower_components/moment/min/moment.min.js"></script>
+#Create time-interface.js and put it in our development js folder.Create an empty header with id where the time will be displayed. Now, we can display the current time like this:
+$(document).ready(function(){
+   $('#time').text(moment());
+});
+#If we rebuild we will be able to see the current time displayed in the browser when we reload our page.
+#Use npm to install another gulp package called bower-files: :: npm install bower-files --save-dev
+*** let's use gulp to streamline this rather than adding a ton of <script> and <link> tags to our HTML file  ***
+
+                                      Using Bower Packages in the Gulpfile
+#Write the following code in your guplfile.js:
+var lib = require('bower-files')();
+
+gulp.task('bowerJs', function(){
+    return gulp.src(lib.ext('js').files)
+    .pipe(concat('vendor.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./build/js');
+});
+#First, we require the bower-files package, which returns a function.
+#We tell that function to immediately run by placing an empty set of parenthesis after the call to require:
+#When we run this bower-files function, it returns a collection of all the files relevant to the dependencies stored in our Bower manifest file bower.json.
+#Then in our task we use gulp.src to pull in all the JavaScript files, and output one concatenated, minified file called vendor.js that we will load in our index.html file.
+#We are filtering out only the .js files by using the ext method built into bower-files. ext stands for "extension", and we pass it in the extension we want ('js') as an argument. 
+#Finally, we use the same gulp.dest method to put the finished file into our build/js directory.
+*** All we need to do is run gulp bowerJS every time we add a new JavaScript front-end dependency.  ***
+#Add build and tmp into gitignore file 
+#Replace your jquery and bootstrap scripts with <script src="build/js/vendor.min.js"></script>
+#Replace bootstrap css with <link rel="stylesheet" href="build/css/vendor.css">
+#Create a task for the vendor.css :
+var lib = require('bower-files')();
+
+gulp.task('bowerCSS', function(){
+   gulp.src(lib.ext('css').files)) // We are filtering and pulling in all the .css files
+   .pipe(concat('vendor.css')) // vendor.css file created and concatenated
+   .pipe(gulp.dest('./build/css')); // Location of vendor.css
+});
+
+#Replace var lib = require('bower-files')(); with:
+var lib = require('bower-files')({
+     "overrides":{
+     "bootstrap" : {
+     "main": [
+     "less/bootstrap.less",
+     "dist/css/bootstrap.css",
+     "dist/js/bootstrap.js" 
+  ]
+  }  
+ }
+});
+#Then place it on top with other require vars
+#Then combine the bowerJS task and bowerCSS task:
+@@ Example @@
+gulp.task('bower', ['bowerJS', 'bowerCSS']);
+ 
+
+
+                        Using a Development Server
+It's a development server 
+                 BrowserSync
+#BrowserSync is used to implement our development server with live reloading.
+#Install browsersync :: npm install browser-sync --save-dev
+#Require it in the gulp file :: var browserSync = require('browser-sync').create();
+#Build a browser-sync task 
+@@ Example @@
+var browserSync = require('browser-sync').create();
+
+gulp.task('server', function(){ // server task
+   browserSync.init({ // browserSync initialized and launches the local server
+     server: { // The local server
+     baseDir: "./", // The directory where the server is launced from
+     index: "index.html" // The entry point where we want to start our app
+}
+});
+});
+
+
+                  Live Reloading with BrowserSync and Gulp
+#Automatically replaces the files on the server and reload the browser when our JavaScript changes. 
+#We will use a new gulp method called watch, gulp.watch() inside the server task so that the files are being watched automatically as soon as we start the server.
+#We pass in 2 arguments. The first is an array of file names that we want gulp to keep an eye on.
+#The second argument is an array of tasks to run whenever any of the aforementioned files change.
+@@ Example @@
+var browserSync = require('browser-sync').create();
+
+gulp.task('server', function() {
+  browserSync.init({
+    server:{
+    baseDir: "./",
+    index: "index.html"
+}
+});
+gulp.watch(['js/*.js'], ['jsBuild'],); // If the js files change, jsBuild task runs
+});
+
+#Then create your jsBuild task
+@@ Example @@
+gulp.task('jsBuild', ['jsBrowserify', 'jshint']); // jsBuild task has an array of tasks dependencies to be run if the js files change
+
+*** we could have called minifyScripts here instead of jsBrowserify, but since we are working on a tasks for the local development server here, we can assume a development environment and ignore the production build tasks. ***
+
+#Also add to the server :: gulp.watch(['bower.json'], ['bowerBuild']); 
+ *** we are watching the Bower manifest file for changes so that whenever we install or uninstall a frontend dependency our vendor files will be rebuilt and the browser reloaded with the bowerBuild task.  ***
+#Then create your bowerBuild task
+@@ Example @@
+gulp.task('bowerBuild', ['bower'], function() { // This task watches bower files for changes
+    browserSync.reload();
+});
+
+*** We can keep adding as many watchers and build tasks as we need using this format. Just remember that any time you change a gulp task, you must restart the server.***
+
+*** By default, gulp runs all tasks simultaneously. So you must use dependency arrays to specify if a task must be completed before another one ***
+
+
+                                             Using an API
+#API stands for "Application Programming Interface"
+#A web API is a way to program something by making web requests.
+                                          AJAX
+#We will be using AJAX to make our web requests
+#AJAX stands for "Asynchronous JavaScript And XML"
+#AJAX is a technique which allows you to make web requests without a page reload.
+                                          Same Origin Policy and AJAX
+#By default, browsers use the "Same Origin Policy", a security measure that only allows a web page to make AJAX requests to the same domain it was loaded from.
+#Cross-Origin Resource Sharing (CORS) standard, the server can specify which domains are allowed to make AJAX requests to it.
+                                          Implementing an API
+#Create a little page for finding the current humidity in a city of the user's choice.
+#Since we have many html files, we need to add a gulp.watch for :: gulp.watch(['*.html'], ['htmlBuild']);
+#Create a task for htmlBuild :: gulp.task('htmlBuild', function() {
+                                    browserSync.reload();
+                                         });
+*** This one is simpler than the other build tasks because there aren't any dependency tasks. We just want to reload the browser any time our HTML files change. ***
+                                     API Keys
+#Sign up a free account at the open weather Map website
+#You'll be provided with a free IPA key to let us access their data when we make our AJAX request
+#Check the API docs for getting the current weather
+#Add javascript to make the AJAX request
+@@ Example @@
+var apiKey = "our api key goes here";
+
+$(document).ready(function() {
+   $('#weatherLocation').click(function() {
+   var city = $('#location').val();
+   $('#location').val("");
+   $('.showweather').text("The city you chose is " + cit + ".");
+});
+});

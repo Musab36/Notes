@@ -1,0 +1,4 @@
+                         BOWER STEPS:
+#1 Install bower in your computer :: npm install bower -g
+#2 Initialize your project folder :: bower init
+#3
