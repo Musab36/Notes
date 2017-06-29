@@ -23,6 +23,19 @@ $gray : #d3d3d3; // Our Sass var with a hex color
 #Install in your project folder gulp-sass and gulp sourcemaps :: npm install gulp-sass gulp-sourcemaps --save-dev
 #Require them at the top of your gulpfile.js :: var sass = require('gulp-sass');
                                                 var sourcemaps = require('gulp-sourcemaps');
-#Add cssBuild task to your gulpfile :: gulp.task('cssbuild', function() {
+#Add cssBuild task to your gulpfile :: 
+gulp.task('cssbuild', function() {  // This task loads all source files inside of our scss folder with the extension.scss.
+         sourcemaps.init() // sourcemaps.init method processes scss files
+         return gulp.src(['./scss/*.scss'])
+         .pipe(sass()) // The sass method translates our files into normal CSS
+         .pipe(sourcemaps.write())
+         .pipe(gulp.dest('./build/css'))
+         .pipe(sourcemaps.stream()); // We are auto-injecting our new CSS into the browser.
 
-                         }
+    });
+#Now, if we run gulp cssBuild and then gulp serve, we will see our new styles on our weather 
+#Add a watcher for our SCSS files to our serve task, so that they are built automatically whenever they are changed.
+:: gulp.watch(['./scss/*.scss'] ['cssBuild']);
+
+*** we don't need to call a separate build task from the watcher, we can call our existing cssBuild task and just add a call to browserSync.stream() at the end to auto-inject our new CSS into the browser. ***
+:: .pipe(sourcemaps.stream());
