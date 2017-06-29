@@ -38,4 +38,9 @@ gulp.task('cssbuild', function() {  // This task loads all source files inside o
 :: gulp.watch(['./scss/*.scss'] ['cssBuild']);
 
 *** we don't need to call a separate build task from the watcher, we can call our existing cssBuild task and just add a call to browserSync.stream() at the end to auto-inject our new CSS into the browser. ***
-:: .pipe(sourcemaps.stream());
+:: .pipe(sourcemaps.stream())
+#Now we can run gulp serve 
+#and as soon as we edit and save one of our .scss files, they will automatically be compiled into CSS and we can see the changes in the browser without a reload. 
+#Create styles.scss file
+#Add your cssBuild task to our global build task. :: gulp.start('cssBuild');
+ 
