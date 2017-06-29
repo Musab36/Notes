@@ -1,4 +1,50 @@
                          BOWER STEPS:
 #1 Install bower in your computer :: npm install bower -g
 #2 Initialize your project folder :: bower init
-#3
+#3 Install jquery :: bower install jquery --save
+#4 Put jquery link at the top <script src="bower_components/dist/jquery.min.js"></script>
+#5 Install bootstrap :: bower install bootstarp --save
+#6 Put bootstrap css link below jquery :: <link rel="stylesheet" href="bower_components/dist/css/bootstrap.min.css">
+#7 Put bootstrap js link below it :: <script src="bower_components/dist/js/bootstrap.min.js"></script>
+#8 Install moment.js *** Optional, only install if you want to deal with date and time *** :: bower install moment --save
+#9 Put moment.js link below bootstrap js <script src="bower_components/moment/min/moment.min.js"></script>
+#10 Install bower-files :: npm install bower-files
+#11 Require bower-files at the top :: var lib = require('bower-files')({}
+           "overrides":{
+            "bootstrap" : {
+             "main": [
+              "lesss/bootstrap.less",
+               "dist/css/bootstrap.css",
+                "dist/js/bootstrap.js"
+        ] 
+       }
+      }
+      ));
+#12 Create a bowerJS task :: gulp.task('bowerJS', function() {
+                                 gulp.src(lib.ext('js').files)
+                                 .pipe(concat('vendor.min.js')
+                                 .pipe(uglify()
+                                 .pipe(gulp.dest('./build/js');
+                                
+                                });
+#13 Create a bowerCSS task :: gulp.task('bowerCSS', function(){
+                                   gulp.src(lib.ext('css').files)
+                                   .pipe(concat('vendor.css')
+                                   .pipe(gulp.dest('./build/css'); 
+                                  });
+#14 Combine your bowerJS and bowerCSS tasks into one bower task :: gulp.task('bower', ['bowerJS', 'bowerCSS']);
+#15 Replace your js and css scripts and link tags except your app.js with vendor js and css ::
+                                         <link rel="stylesheet" href="build/css/vendor.css">
+                                         <script src="build/js/vendor.min.js"></script>
+#16 Install the vendor js and css files by :: gulp bower
+#17 Install browser-sync to create your server :: npm install browser-sync --save-dev
+#18 Require browser-sync at the top :: var browserSync = require('browser-sync').create();
+#19 Create a browser-sync task :: gulp.task('server', function() {
+                                      browserSync.init({
+                                      server: {
+                                       baseDir: "./",
+                                       index: "index.html"  
+                                      }     
+                                  });
+                                  });
+#20 Use gulp.watch() method in your server task to keep track of the changes of your js files

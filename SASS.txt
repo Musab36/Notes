@@ -1,0 +1,28 @@
+                       Sass with gulp
+#Sass is a css preprocessor that lets you use things like variables and nesting to better organize your css
+#It lets us add CSS to our projects
+@@ Example @@
+$gray : #d3d3d3; // Our Sass var with a hex color
+
+.box {
+  background: $gray; // We called the Sass var to change the background color
+  border: 3px solid black;
+  padding: 40px 80px;
+  .button {                   // .button is nested within the .box class
+    font-weight: bold;
+    text-align: center;
+    background: red;
+    color: white;
+  }
+}
+
+#Install Ruby in windows in order to install Sass
+#Run command as administrator :: gem install sass
+
+                            Using Sass
+#Install in your project folder gulp-sass and gulp sourcemaps :: npm install gulp-sass gulp-sourcemaps --save-dev
+#Require them at the top of your gulpfile.js :: var sass = require('gulp-sass');
+                                                var sourcemaps = require('gulp-sourcemaps');
+#Add cssBuild task to your gulpfile :: gulp.task('cssbuild', function() {
+
+                         }
